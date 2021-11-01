@@ -2,17 +2,19 @@ import { useContext, useState } from "react";
 
 import { AppContext } from "../AppContext";
 
-const AddTask = () => {
-  const { addPanelActive, setEvents, events, setAddPanelActive } =
+import ExitBtn from "./ExitBtn";
+
+const AddTask = ({ calendarActive, date }) => {
+  const { addPanelActive, setTasks, tasks, setAddPanelActive } =
     useContext(AppContext);
   const [titleInputValue, setTitleInputValue] = useState("");
-  const [dateInputValue, setDateInputValue] = useState("");
+  const [dateInputValue, setDateInputValue] = useState(date ? date : "");
   const [descriptionInputValue, setDescriptionInputValue] = useState("");
   const [titleValidate, setTitleValidate] = useState(false);
   const [dateValidate, setDateValidate] = useState(false);
   const [taskAdded, setTaskAdded] = useState(false);
 
-  const showOrHidePanel = addPanelActive ? "show" : "hide";
+  const showOrHidePanel = addPanelActive || calendarActive ? "show" : "hide";
 
   const handleAddTaskBtn = (event) => {
     event.preventDefault();
@@ -28,28 +30,27 @@ const AddTask = () => {
         setDateValidate(false);
       }
     } else {
-      const newEvent = {
-        id: events.length + 1,
+      const newTask = {
+        id: tasks.length + 1,
         title: titleInputValue,
         date: dateInputValue,
         description: descriptionInputValue,
       };
 
-      setEvents((prev) => [...prev, newEvent]);
+      setTasks((prev) => [...prev, newTask]);
 
       setTaskAdded(true);
       setTitleInputValue("");
       setDateInputValue("");
       setDescriptionInputValue("");
-      setTimeout(() => {
-        setTaskAdded(false);
-        setAddPanelActive(false);
-      }, 5000);
     }
   };
 
   const fromOrMessage = taskAdded ? (
-    <h2>Zadanie dodane!</h2>
+    <>
+      <ExitBtn func={setTaskAdded} />
+      <h2>Zadanie dodane!</h2>
+    </>
   ) : (
     <form onSubmit={handleAddTaskBtn}>
       <label>
@@ -65,6 +66,7 @@ const AddTask = () => {
         Data zadania:
         <input
           type="date"
+          min={new Date().toISOString().split("T")[0]}
           value={dateInputValue}
           onChange={(event) => setDateInputValue(event.target.value)}
         />
@@ -78,11 +80,16 @@ const AddTask = () => {
           onChange={(event) => setDescriptionInputValue(event.target.value)}
         />
       </label>
-      <button type="submit">Dodaj zadanie</button>
+      <button type="submit">Dodaj</button>
     </form>
   );
 
-  return <div className={`${showOrHidePanel}`}>{fromOrMessage}</div>;
+  return (
+    <div className={`${showOrHidePanel}`}>
+      {calendarActive ? null : <ExitBtn func={setAddPanelActive} />}
+      {fromOrMessage}
+    </div>
+  );
 };
 
 export default AddTask;

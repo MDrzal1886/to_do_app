@@ -6,10 +6,19 @@ const AppProvider = ({ children }) => {
   const [addPanelActive, setAddPanelActive] = useState(false);
   const [listPanelActive, setListPanelActive] = useState(false);
   const [calendarPanelActive, setCalendarPanelActive] = useState(false);
-  const [events, setEvents] = useState([
-    { title: "jeden", date: "2021-11-01" },
-    { title: "dwa", date: "2021-11-02" },
+  const [tasks, setTasks] = useState([
+    { id: 1, title: "jeden", date: "2021-11-01" },
+    { id: 2, title: "dwa", date: "2021-11-05" },
+    { id: 3, title: "rwe", date: "2021-11-01" },
+    { id: 4, title: "sfdgf", date: "2021-11-02" },
   ]);
+  const [dayTasksPanelActive, setDayTasksPanelActive] = useState(false);
+
+  const handleDelateBtn = (id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    newTasks.map((task, index) => (task.id = index + 1));
+    setTasks(newTasks);
+  };
 
   const handleNavButtonClick = (type) => {
     if (type) {
@@ -32,16 +41,26 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const handleExitBtn = (func) => {
+    func(false);
+  };
+
   return (
     <AppContext.Provider
       value={{
         addPanelActive,
         listPanelActive,
         calendarPanelActive,
+        setListPanelActive,
+        setCalendarPanelActive,
         setAddPanelActive,
-        events,
-        setEvents,
+        tasks,
+        setTasks,
+        handleDelateBtn,
         handleNavButtonClick,
+        dayTasksPanelActive,
+        setDayTasksPanelActive,
+        handleExitBtn,
       }}
     >
       {children}
