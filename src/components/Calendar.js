@@ -2,6 +2,8 @@ import { useContext } from "react";
 
 import { AppContext } from "../AppContext";
 
+import MyCalendar from "./MyCalendar";
+
 const Calendar = () => {
   const { calendarPanelActive } = useContext(AppContext);
 
@@ -9,7 +11,7 @@ const Calendar = () => {
 
   return (
     <div className={`${showOrHidePanel}`}>
-      <p>kalendarz</p>
+      <MyCalendar />
     </div>
   );
 };

@@ -6,6 +6,10 @@ const AppProvider = ({ children }) => {
   const [addPanelActive, setAddPanelActive] = useState(false);
   const [listPanelActive, setListPanelActive] = useState(false);
   const [calendarPanelActive, setCalendarPanelActive] = useState(false);
+  const [events, setEvents] = useState([
+    { title: "jeden", date: "2021-11-01" },
+    { title: "dwa", date: "2021-11-02" },
+  ]);
 
   const handleNavButtonClick = (type) => {
     if (type) {
@@ -34,6 +38,8 @@ const AppProvider = ({ children }) => {
         addPanelActive,
         listPanelActive,
         calendarPanelActive,
+        events,
+        setEvents,
         handleNavButtonClick,
       }}
     >
