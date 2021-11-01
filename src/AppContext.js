@@ -38,6 +38,7 @@ const AppProvider = ({ children }) => {
         addPanelActive,
         listPanelActive,
         calendarPanelActive,
+        setAddPanelActive,
         events,
         setEvents,
         handleNavButtonClick,
