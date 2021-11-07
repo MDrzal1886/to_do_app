@@ -2,8 +2,8 @@ import Navigation from "./components/Navigation";
 
 function App() {
   return (
-    <div className="Container">
-      <h1>Osobisty manager zadań</h1>
+    <div className="container">
+      <h1>Manager zadań</h1>
       <Navigation />
     </div>
   );

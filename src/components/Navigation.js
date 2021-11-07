@@ -1,31 +1,10 @@
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-
+import { useContext } from "react";
+import { AppContext } from "../AppContext";
 import NavButton from "./NavButton";
 
-const buttonTypes = [
-  {
-    id: 1,
-    type: "add",
-    icon: faPlusCircle,
-    name: "Dodaj zadanie",
-  },
-  {
-    id: 2,
-    type: "list",
-    icon: faClipboardList,
-    name: "Lista zadań",
-  },
-  {
-    id: 3,
-    type: "calendar",
-    icon: faCalendar,
-    name: "Kalendarz",
-  },
-];
-
 const Navigation = () => {
+  const { buttonTypes } = useContext(AppContext);
+
   const navButtons = buttonTypes.map((navButton) => (
     <NavButton key={navButton.id} {...navButton} />
   ));
