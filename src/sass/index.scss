@@ -1,7 +1,286 @@
-.show {
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
+
+@mixin dark-color {
+  background: #74ebd5;
+  background: -webkit-linear-gradient(to right, #acb6e5, #74ebd5);
+  background: linear-gradient(to right, #acb6e5, #74ebd5);
+}
+
+@mixin light-color {
+  background: #d3cce3;
+  background: -webkit-linear-gradient(to right, #e9e4f0, #d3cce3);
+  background: linear-gradient(to right, #e9e4f0, #d3cce3);
+}
+
+@mixin animate(
+  $animation,
+  $duration,
+  $times,
+  $delay,
+  $count,
+  $direction,
+  $fill
+) {
+  animation: $animation $duration $times $delay $count $direction $fill;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Marcellus", serif;
+  font-size: 10px;
+  @include light-color();
+}
+
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 300px;
+    .navButtonContainer {
+      .navButton {
+        border: none;
+        border-radius: 50%;
+        height: 70px;
+        width: 70px;
+        font-size: 2rem;
+        line-height: 70px;
+        @include dark-color();
+      }
+    }
+    .panelContainer {
+      position: absolute;
+      overflow-x: hidden;
+      z-index: 4;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 0px;
+      width: 0px;
+      .light-color {
+        @include light-color();
+      }
+      .dark-color {
+        @include dark-color();
+      }
+      .addPanelContainer {
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        .addPanelInput {
+          font-family: "Marcellus", serif;
+          border: none;
+          width: 70%;
+          text-align: center;
+          font-size: 1rem;
+          padding: 10px 15px;
+          outline: none;
+          @include light-color();
+        }
+      }
+      .calendarContainer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 300px;
+        .fc-day-today {
+          @include light-color();
+          .fc-daygrid-event {
+            @include dark-color();
+          }
+        }
+        .fc-daygrid-event {
+          border-radius: 50%;
+          width: 15px;
+          height: 15px;
+          margin: 0 auto;
+        }
+        .fc-daygrid-more-link {
+          pointer-events: none;
+        }
+        .fc-more-popover {
+          .fc-daygrid-event {
+            border-radius: 0;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            .fc-event-title {
+              white-space: initial;
+              display: block;
+              margin: 2px auto;
+              color: black;
+            }
+          }
+        }
+        #fc-dom-2 {
+          position: static;
+          text-align: center;
+          top: 0;
+          left: 0;
+          transform: translate(0, 0);
+          margin-top: 20px;
+          font-size: 2rem;
+        }
+        .fc-daygrid-event-harness {
+          pointer-events: none;
+        }
+        .fc-h-event {
+          text-align: center;
+        }
+        .fc-event-title {
+          white-space: initial;
+          color: transparent;
+        }
+      }
+      h2 {
+        text-align: center;
+        font-size: 3rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .tasksListContainer {
+        margin: 15px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style-type: none;
+        .taskListElement {
+          width: 70%;
+          overflow-x: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          flex-wrap: wrap;
+          margin: 15px 0;
+          padding: 10px;
+          line-height: 25px;
+          word-break: break-word;
+          @include light-color();
+          h3 {
+            font-size: 1.1rem;
+          }
+          p {
+            font-size: 0.7rem;
+          }
+          .editPanelInput {
+            font-family: "Marcellus", serif;
+            border: none;
+            width: 90%;
+            text-align: center;
+            font-size: 1rem;
+            padding: 10px 15px;
+            margin: 10px 0;
+            outline: none;
+            @include dark-color();
+          }
+          .buttonsContainer {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            .listElementButton {
+              border: none;
+              border-radius: 50%;
+              height: 25px;
+              width: 25px;
+              font-size: 0.7rem;
+              line-height: 25px;
+              @include dark-color();
+            }
+          }
+        }
+      }
+    }
+    .frontZIndex {
+      z-index: 5;
+    }
+  }
+}
+
+.textarea {
+  height: 150px;
+  text-align: left;
+  resize: none;
+}
+.validate {
+  box-shadow: 0px 0px 0px 2px red;
+}
+
+.dayPanelAddButton {
   display: block;
+  margin: 15px auto 0;
+}
+
+.exitButton {
+  position: sticky;
+  z-index: 3;
+  top: 10px;
+  left: 89vw;
+  border: none;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  font-size: 0.7rem;
+  line-height: 30px;
+  @include light-color();
 }
 
 .hide {
-  display: none;
+  @include dark-color();
+  @include keyframes(hidePanel) {
+    0% {
+      width: 100vw;
+      height: 100vh;
+    }
+    100% {
+      height: 0px;
+      width: 0px;
+    }
+  }
+  @include animate(hidePanel, 0.2s, linear, 0s, 1, normal, forwards);
+}
+
+.show {
+  @include dark-color();
+  @include keyframes(showPanel) {
+    0% {
+      height: 0px;
+      width: 0px;
+      min-height: 0;
+    }
+    100% {
+      width: 100vw;
+      min-height: 100vh;
+    }
+  }
+  @include animate(showPanel, 0.2s, linear, 0s, 1, normal, forwards);
 }
