@@ -335,6 +335,8 @@ html {
         @media (orientation: landscape) {
           @media (min-width: 992px) {
             flex-direction: row;
+            justify-content: space-around;
+            align-content: start;
           }
         }
         .taskListElement {
