@@ -33,8 +33,10 @@ const TasksList = () => {
       <ExitBtn func={setListPanelActive} />
       {tasks.length > 0 ? (
         <>
-          <h1>Lista zadań</h1>
-          <ul className="tasksListContainer">{tasksElements}</ul>
+          <ul className="tasksListContainer">
+            <h1>Lista zadań</h1>
+            {tasksElements}
+          </ul>
         </>
       ) : (
         <h2>Nie masz żadnych zadań :(</h2>
