@@ -29,7 +29,7 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
   <script>
-    const mobile_timer = false, viewport = document.getElementById('viewport');
+    let mobile_timer = false, viewport = document.getElementById('viewport');
     if (navigator.userAgent.match(/iPhone/i)) {
       viewport.setAttribute('content', 'width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0');
       window.addEventListener('gesturestart', function () {

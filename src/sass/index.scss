@@ -61,9 +61,8 @@ html {
   h1 {
     text-align: center;
     font-size: 2rem;
-    margin-top: 40px;
     width: 100%;
-    padding: 0 20px;
+    padding: 40px 20px 0;
     @media (min-width: 576px) {
       font-size: 2.5rem;
     }
@@ -195,6 +194,7 @@ html {
         transform: translate(-50%, -50%);
         width: 100%;
         min-height: 100vh;
+        padding: 10px 0;
         @media (orientation: landscape) {
           flex-direction: row;
           min-height: 300px;
@@ -221,13 +221,13 @@ html {
         left: 50%;
         transform: translate(-50%, -50%);
         min-width: 300px;
-        max-height: 100vh;
-        margin-top: 40px;
+        max-width: 85%;
         @media (min-width: 768px) {
           min-width: 700px;
         }
         @media (orientation: landscape) {
           min-width: 400px;
+          padding: 150px 0 50px;
           @media (min-width: 576px) {
             min-width: 450px;
           }
@@ -320,7 +320,7 @@ html {
         }
       }
       .tasksListContainer {
-        margin: 20px 0;
+        padding: 20px 0 50px;
         display: flex;
         flex-direction: column;
         justify-content: stretch;
