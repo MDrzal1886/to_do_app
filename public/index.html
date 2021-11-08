@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Web site created using create-react-app" />
   <!--
@@ -26,6 +26,7 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script>(function (m) { if (!(/iPhone|iPad|iPod/.test(navigator.platform) && navigator.userAgent.indexOf("AppleWebKit") > -1)) { return } var l = m.document; if (!l.querySelector) { return } var n = l.querySelector("meta[name=viewport]"), a = n && n.getAttribute("content"), k = a + ",maximum-scale=1", d = a + ",maximum-scale=10", g = true, j, i, h, c; if (!n) { return } function f() { n.setAttribute("content", d); g = true } function b() { n.setAttribute("content", k); g = false } function e(o) { c = o.accelerationIncludingGravity; j = Math.abs(c.x); i = Math.abs(c.y); h = Math.abs(c.z); if (!m.orientation && (j > 7 || ((h > 6 && i < 8 || h < 8 && i > 6) && j > 5))) { if (g) { b() } } else { if (!g) { f() } } } m.addEventListener("orientationchange", f, false); m.addEventListener("devicemotion", e, false) })(this);</script>
   <div id="root"></div>
   <!--
       This HTML file is a template.
