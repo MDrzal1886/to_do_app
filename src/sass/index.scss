@@ -53,6 +53,7 @@ body {
   h1 {
     text-align: center;
     font-size: 2rem;
+    margin-top: 40px;
     width: 100%;
     @media (min-width: 576px) {
       font-size: 2.5rem;
@@ -212,6 +213,7 @@ body {
         transform: translate(-50%, -50%);
         min-width: 300px;
         max-height: 100vh;
+        margin-top: 40px;
         @media (min-width: 768px) {
           min-width: 700px;
         }
@@ -317,7 +319,7 @@ body {
         flex-wrap: wrap;
         list-style-type: none;
         @media (orientation: landscape) {
-          @media (min-width: 768px) {
+          @media (min-width: 992px) {
             flex-direction: row;
           }
         }
@@ -336,8 +338,8 @@ body {
           text-align: center;
           @include light-color();
           @media (orientation: landscape) {
-            @media (min-width: 768px) {
-              width: 45%;
+            @media (min-width: 992px) {
+              width: 40%;
             }
           }
           h3 {
@@ -556,8 +558,8 @@ body {
 .exitButton {
   position: sticky;
   z-index: 3;
-  top: 10px;
-  left: calc(100vw - 40px);
+  top: 40px;
+  left: calc(100vw - 45px);
   border: none;
   border-radius: 50%;
   height: 30px;
@@ -569,21 +571,21 @@ body {
     height: 35px;
     width: 35px;
     line-height: 35px;
-    left: calc(100vw - 45px);
+    left: calc(100vw - 55px);
     font-size: 0.8rem;
   }
   @media (min-width: 768px) {
     height: 40px;
     width: 40px;
     line-height: 40px;
-    left: calc(100vw - 50px);
+    left: calc(100vw - 60px);
     font-size: 0.9rem;
   }
   @media (min-width: 992px) {
     height: 45px;
     width: 45px;
     line-height: 45px;
-    left: calc(100vw - 55px);
+    left: calc(100vw - 65px);
     cursor: pointer;
     transition: 0.2s;
     font-size: 1rem;
@@ -595,14 +597,14 @@ body {
     height: 50px;
     width: 50px;
     line-height: 50px;
-    left: calc(100vw - 60px);
+    left: calc(100vw - 70px);
     font-size: 1.1rem;
   }
   @media (min-width: 1400px) {
     height: 60px;
     width: 60px;
     line-height: 60px;
-    left: calc(100vw - 65px);
+    left: calc(100vw - 75px);
     font-size: 1.2rem;
   }
 }
