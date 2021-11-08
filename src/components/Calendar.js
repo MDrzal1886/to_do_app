@@ -72,17 +72,16 @@ const Calendar = () => {
           <FontAwesomeIcon icon={faPlusCircle} />
         </button>
       ) : null}
-      <ul className="tasksListContainer">
-        {dayTasks.length > 0 ? (
-          dayTasksElements
-        ) : clickedDate < todayDate ? (
-          <h1>
-            Nie można dodać zadania, lepiej nie planować zadań na przeszłość!
-          </h1>
-        ) : (
-          <h1>Nie masz zadań w tym dniu</h1>
-        )}
-      </ul>
+
+      {dayTasks.length > 0 ? (
+        <ul className="tasksListContainer">{dayTasksElements}</ul>
+      ) : clickedDate < todayDate ? (
+        <h1>
+          Nie można dodać zadania, lepiej nie planować zadań na przeszłość!
+        </h1>
+      ) : (
+        <h1>Nie masz zadań w tym dniu</h1>
+      )}
     </>
   ) : null;
 
