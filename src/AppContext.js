@@ -12,9 +12,12 @@ const AppProvider = ({ children }) => {
   const [addPanelActive, setAddPanelActive] = useState(null);
   const [listPanelActive, setListPanelActive] = useState(null);
   const [calendarPanelActive, setCalendarPanelActive] = useState(null);
-  const [todayDate, setTodayDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
+  const tzoffset = new Date().getTimezoneOffset() * 60000;
+  const localISOTime = new Date(Date.now() - tzoffset)
+    .toISOString()
+    .slice(0, -1)
+    .split("T")[0];
+  const [todayDate, setTodayDate] = useState(localISOTime);
   const sampleDate = (daysAdded) => {
     const sampleDateTask = new Date(todayDate);
     sampleDateTask.setDate(sampleDateTask.getDate() + daysAdded);
@@ -57,7 +60,6 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     if (todayDate < new Date().toISOString().split("T")[0]) {
-      console.log("new date");
       setTodayDate(new Date().toISOString().split("T")[0]);
     }
   }, [todayDate, addPanelActive, listPanelActive, calendarPanelActive]);

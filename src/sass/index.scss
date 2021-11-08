@@ -39,11 +39,12 @@
 body {
   font-family: "Marcellus", serif;
   font-size: 10px;
-  @include light-color();
 }
 
 .container {
+  @include light-color();
   width: 100vw;
+  min-width: 200px;
   min-height: 100vh;
   overflow: hidden;
   display: flex;
@@ -51,8 +52,23 @@ body {
   justify-content: center;
   h1 {
     text-align: center;
-    margin-bottom: 20px;
     font-size: 2rem;
+    width: 100%;
+    @media (min-width: 576px) {
+      font-size: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+    @media (min-width: 992px) {
+      font-size: 3.5rem;
+    }
+    @media (min-width: 1200px) {
+      font-size: 4rem;
+    }
+    @media (min-width: 1400px) {
+      font-size: 4.5rem;
+    }
   }
   .navigation {
     display: flex;
@@ -60,6 +76,41 @@ body {
     align-items: center;
     justify-content: space-around;
     height: 300px;
+
+    @media (min-width: 576px) {
+      height: 500px;
+    }
+    @media (min-width: 768px) {
+      height: 700px;
+    }
+    @media (min-width: 992px) {
+      height: 900px;
+    }
+    @media (min-width: 1200px) {
+      height: 1100px;
+    }
+    @media (min-width: 1400px) {
+      height: 1300px;
+    }
+    @media (orientation: landscape) {
+      flex-direction: row;
+      height: 150px;
+      @media (min-width: 576px) {
+        height: 200px;
+      }
+      @media (min-width: 768px) {
+        height: 250px;
+      }
+      @media (min-width: 992px) {
+        height: 300px;
+      }
+      @media (min-width: 1200px) {
+        height: 350px;
+      }
+      @media (min-width: 1400px) {
+        height: 400px;
+      }
+    }
     .navButtonContainer {
       .navButton {
         border: none;
@@ -69,6 +120,41 @@ body {
         font-size: 2rem;
         line-height: 70px;
         @include dark-color();
+        @media (min-width: 576px) {
+          height: 100px;
+          width: 100px;
+          font-size: 2.5rem;
+          line-height: 100px;
+        }
+        @media (min-width: 768px) {
+          height: 130px;
+          width: 130px;
+          font-size: 3rem;
+          line-height: 130px;
+        }
+        @media (min-width: 992px) {
+          height: 150px;
+          width: 150px;
+          font-size: 3.5rem;
+          line-height: 150px;
+          cursor: pointer;
+          transition: 0.2s;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+        @media (min-width: 1200px) {
+          height: 180px;
+          width: 180px;
+          font-size: 4rem;
+          line-height: 180px;
+        }
+        @media (min-width: 1400px) {
+          height: 210px;
+          width: 210px;
+          font-size: 4.5rem;
+          line-height: 210px;
+        }
       }
     }
     .panelContainer {
@@ -87,20 +173,36 @@ body {
         @include dark-color();
       }
       .addPanelContainer {
-        height: 400px;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        flex-wrap: wrap;
         align-items: center;
-        .addPanelInput {
-          font-family: "Marcellus", serif;
-          border: none;
-          width: 70%;
-          text-align: center;
-          font-size: 1rem;
-          padding: 10px 15px;
-          outline: none;
-          @include light-color();
+        min-height: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        min-height: 100vh;
+        @media (orientation: landscape) {
+          flex-direction: row;
+          min-height: 300px;
+          @media (min-width: 576px) {
+            min-height: 330px;
+          }
+          @media (min-width: 768px) {
+            min-height: 350px;
+          }
+          @media (min-width: 992px) {
+            min-height: 430px;
+          }
+          @media (min-width: 1200px) {
+            min-height: 500px;
+          }
+          @media (min-width: 1400px) {
+            min-height: 600px;
+          }
         }
       }
       .calendarContainer {
@@ -109,6 +211,28 @@ body {
         left: 50%;
         transform: translate(-50%, -50%);
         min-width: 300px;
+        max-height: 100vh;
+        @media (min-width: 768px) {
+          min-width: 700px;
+        }
+        @media (orientation: landscape) {
+          min-width: 400px;
+          @media (min-width: 576px) {
+            min-width: 550px;
+          }
+          @media (min-width: 768px) {
+            min-width: 700px;
+          }
+          @media (min-width: 992px) {
+            min-width: 850px;
+          }
+          @media (min-width: 1200px) {
+            min-width: 1000px;
+          }
+          @media (min-width: 1400px) {
+            min-width: 1150px;
+          }
+        }
         .fc-day-today {
           @include light-color();
           .fc-daygrid-event {
@@ -120,6 +244,9 @@ body {
           width: 15px;
           height: 15px;
           margin: 0 auto;
+        }
+        .fc-daygrid-day-bottom {
+          text-align: center;
         }
         .fc-daygrid-more-link {
           pointer-events: none;
@@ -160,11 +287,26 @@ body {
       }
       h2 {
         text-align: center;
-        font-size: 3rem;
+        font-size: 2rem;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        @media (min-width: 576px) {
+          font-size: 2.5rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 3rem;
+        }
+        @media (min-width: 992px) {
+          font-size: 3.5rem;
+        }
+        @media (min-width: 1200px) {
+          font-size: 4rem;
+        }
+        @media (min-width: 1400px) {
+          font-size: 4.5rem;
+        }
       }
       .tasksListContainer {
         margin: 15px 0;
@@ -172,7 +314,13 @@ body {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
+        flex-wrap: wrap;
         list-style-type: none;
+        @media (orientation: landscape) {
+          @media (min-width: 768px) {
+            flex-direction: row;
+          }
+        }
         .taskListElement {
           width: 70%;
           overflow-x: hidden;
@@ -185,23 +333,81 @@ body {
           padding: 10px;
           line-height: 25px;
           word-break: break-word;
+          text-align: center;
           @include light-color();
+          @media (orientation: landscape) {
+            @media (min-width: 768px) {
+              width: 45%;
+            }
+          }
           h3 {
             font-size: 1.1rem;
+            padding: 10px;
+            @media (min-width: 576px) {
+              font-size: 1.3rem;
+            }
+            @media (min-width: 768px) {
+              font-size: 1.6rem;
+            }
+            @media (min-width: 992px) {
+              font-size: 1.8rem;
+            }
+            @media (min-width: 1200px) {
+              font-size: 2rem;
+            }
+            @media (min-width: 1400px) {
+              font-size: 2.2rem;
+            }
           }
           p {
             font-size: 0.7rem;
+            padding: 10px;
+            @media (min-width: 576px) {
+              font-size: 0.9rem;
+            }
+            @media (min-width: 768px) {
+              font-size: 1.1rem;
+            }
+            @media (min-width: 992px) {
+              font-size: 1.3rem;
+            }
+            @media (min-width: 1200px) {
+              font-size: 1.5rem;
+            }
+            @media (min-width: 1400px) {
+              font-size: 1.7rem;
+            }
           }
           .editPanelInput {
             font-family: "Marcellus", serif;
             border: none;
             width: 90%;
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.7rem;
             padding: 10px 15px;
             margin: 10px 0;
             outline: none;
             @include dark-color();
+            @media (min-width: 576px) {
+              font-size: 0.9rem;
+              padding: 18px 11px;
+            }
+            @media (min-width: 768px) {
+              font-size: 1.1rem;
+              padding: 21px 12px;
+            }
+            @media (min-width: 992px) {
+              font-size: 1.3rem;
+              padding: 24px 13px;
+            }
+            @media (min-width: 1200px) {
+              font-size: 1.5rem;
+              padding: 27px 14px;
+            }
+            @media (min-width: 1400px) {
+              font-size: 1.7rem;
+              padding: 30px 15px;
+            }
           }
           .buttonsContainer {
             display: flex;
@@ -210,11 +416,46 @@ body {
             .listElementButton {
               border: none;
               border-radius: 50%;
-              height: 25px;
-              width: 25px;
-              font-size: 0.7rem;
-              line-height: 25px;
+              height: 40px;
+              width: 40px;
+              font-size: 0.8rem;
+              line-height: 40px;
               @include dark-color();
+              @media (min-width: 576px) {
+                height: 50px;
+                width: 50px;
+                font-size: 1.1rem;
+                line-height: 50px;
+              }
+              @media (min-width: 768px) {
+                height: 60px;
+                width: 60px;
+                font-size: 1.4rem;
+                line-height: 60px;
+              }
+              @media (min-width: 992px) {
+                height: 70px;
+                width: 70px;
+                font-size: 1.7rem;
+                line-height: 70px;
+                cursor: pointer;
+                transition: 0.2s;
+                &:hover {
+                  transform: scale(1.1);
+                }
+              }
+              @media (min-width: 1200px) {
+                height: 80px;
+                width: 80px;
+                font-size: 2rem;
+                line-height: 80px;
+              }
+              @media (min-width: 1400px) {
+                height: 90px;
+                width: 90px;
+                font-size: 2.3rem;
+                line-height: 90px;
+              }
             }
           }
         }
@@ -226,25 +467,97 @@ body {
   }
 }
 
+.addPanelInput {
+  font-family: "Marcellus", serif;
+  border: none;
+  width: 70%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 15px 10px;
+  outline: none;
+  @include light-color();
+  @media (orientation: landscape) {
+    width: 45%;
+  }
+  @media (min-width: 576px) {
+    font-size: 1.2rem;
+    padding: 18px 11px;
+  }
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+    padding: 21px 12px;
+  }
+  @media (min-width: 992px) {
+    font-size: 1.6rem;
+    padding: 24px 13px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 1.8rem;
+    padding: 27px 14px;
+  }
+  @media (min-width: 1400px) {
+    font-size: 2rem;
+    padding: 30px 15px;
+  }
+}
+
 .textarea {
   height: 150px;
   text-align: left;
   resize: none;
+  @media (min-width: 576px) {
+    height: 160px;
+  }
+  @media (min-width: 768px) {
+    height: 180px;
+  }
+  @media (min-width: 992px) {
+    height: 210px;
+  }
+  @media (min-width: 1200px) {
+    height: 250px;
+  }
+  @media (min-width: 1400px) {
+    height: 300px;
+  }
+  @media (orientation: landscape) {
+    width: calc(100% - 70px - 10%);
+    @media (min-width: 576px) {
+      width: calc(100% - 100px - 10%);
+    }
+    @media (min-width: 768px) {
+      width: calc(100% - 130px - 10%);
+    }
+    @media (min-width: 992px) {
+      width: calc(100% - 150px - 10%);
+    }
+    @media (min-width: 1200px) {
+      width: calc(100% - 180px - 10%);
+    }
+    @media (min-width: 1400px) {
+      width: calc(100% - 210px - 10%);
+    }
+  }
 }
+
 .validate {
   box-shadow: 0px 0px 0px 2px red;
 }
 
 .dayPanelAddButton {
   display: block;
-  margin: 15px auto 0;
+  margin: 10px auto 0;
+}
+
+.overFlowHidden {
+  overflow: hidden;
 }
 
 .exitButton {
   position: sticky;
   z-index: 3;
   top: 10px;
-  left: 89vw;
+  left: calc(100vw - 40px);
   border: none;
   border-radius: 50%;
   height: 30px;
@@ -252,6 +565,46 @@ body {
   font-size: 0.7rem;
   line-height: 30px;
   @include light-color();
+  @media (min-width: 576px) {
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    left: calc(100vw - 45px);
+    font-size: 0.8rem;
+  }
+  @media (min-width: 768px) {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    left: calc(100vw - 50px);
+    font-size: 0.9rem;
+  }
+  @media (min-width: 992px) {
+    height: 45px;
+    width: 45px;
+    line-height: 45px;
+    left: calc(100vw - 55px);
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 1rem;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  @media (min-width: 1200px) {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    left: calc(100vw - 60px);
+    font-size: 1.1rem;
+  }
+  @media (min-width: 1400px) {
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    left: calc(100vw - 65px);
+    font-size: 1.2rem;
+  }
 }
 
 .hide {
@@ -273,12 +626,13 @@ body {
   @include dark-color();
   @include keyframes(showPanel) {
     0% {
-      height: 0px;
       width: 0px;
+      min-width: 0;
       min-height: 0;
     }
     100% {
       width: 100vw;
+      min-width: 200px;
       min-height: 100vh;
     }
   }

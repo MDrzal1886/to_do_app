@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 
 import { AppContext } from "../AppContext";
 import Task from "./Task";
@@ -17,10 +17,19 @@ const TasksList = () => {
     }
   };
 
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    containerRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [listPanelActive]);
+
   const tasksElements = tasks.map((task) => <Task key={task.id} {...task} />);
 
   return (
-    <div className={`${showOrHidePanel()} panelContainer`}>
+    <div ref={containerRef} className={`${showOrHidePanel()} panelContainer`}>
       <ExitBtn func={setListPanelActive} />
       {tasks.length > 0 ? (
         <>

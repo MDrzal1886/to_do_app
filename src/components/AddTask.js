@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -24,6 +24,15 @@ const AddTask = () => {
   const [titleValidate, setTitleValidate] = useState(false);
   const [dateValidate, setDateValidate] = useState(false);
   const [taskAdded, setTaskAdded] = useState(false);
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    containerRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [addPanelActive]);
 
   useEffect(() => {
     if (clickedDate && calendarPanelActive) {
@@ -93,8 +102,8 @@ const AddTask = () => {
     </>
   ) : (
     <>
-      <h1>Dodaj zadanie</h1>
       <form onSubmit={handleAddTaskBtn} className="addPanelContainer">
+        <h1>Dodaj zadanie</h1>
         <input
           className={`${
             titleValidate && titleInputValue === "" ? "validate" : ""
@@ -129,13 +138,15 @@ const AddTask = () => {
   );
 
   return (
-    <div className={`${showOrHidePanel()} panelContainer frontZIndex`}>
+    <div
+      ref={containerRef}
+      className={`${showOrHidePanel()} panelContainer frontZIndex`}
+    >
       <ExitBtn
         func={setAddPanelActive}
         clear={clearInputs}
         added={setTaskAdded}
       />
-
       {fromOrMessage}
     </div>
   );

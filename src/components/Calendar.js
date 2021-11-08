@@ -29,13 +29,18 @@ const Calendar = () => {
   const [dayTasks, setDayTasks] = useState([]);
 
   const calendarRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const calendarApi = calendarRef.current.getApi();
     if (!calendarPanelActive) {
       calendarApi.today();
     }
-  }, [calendarPanelActive]);
+    containerRef.current.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [calendarPanelActive, dayTasksPanelActive]);
 
   const handleDateClick = (info) => {
     const date = info.dateStr;
@@ -82,6 +87,7 @@ const Calendar = () => {
   ) : null;
 
   const showOrHideDayTaskPanel = dayTasksPanelActive ? "show" : "hide";
+  const overFlow = dayTasksPanelActive ? "overFlowHidden" : "";
 
   const showOrHidePanel = () => {
     if (calendarPanelActive === false) {
@@ -94,7 +100,10 @@ const Calendar = () => {
   };
 
   return (
-    <div className={`${showOrHidePanel()} panelContainer`}>
+    <div
+      ref={containerRef}
+      className={`${showOrHidePanel()} ${overFlow} panelContainer`}
+    >
       <ExitBtn func={setCalendarPanelActive} />
       <div className={`${showOrHideDayTaskPanel} panelContainer`}>
         <ExitBtn func={setDayTasksPanelActive} />
