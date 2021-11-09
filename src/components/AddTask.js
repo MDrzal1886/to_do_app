@@ -117,7 +117,7 @@ const AddTask = () => {
         <input
           className={`${
             dateValidate && dateInputValue === "" ? "validate" : ""
-          } addPanelInput`}
+          } addPanelInput dateInput`}
           type="date"
           min={todayDate}
           value={dateInputValue}

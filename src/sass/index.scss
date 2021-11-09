@@ -193,16 +193,31 @@ html {
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
-        min-height: 100vh;
-        padding: 10px 0;
+        padding: 50px 0;
+        @media (min-width: 576px) {
+          min-height: 600px;
+        }
+        @media (min-width: 768px) {
+          min-height: 800px;
+        }
+        @media (min-width: 992px) {
+          min-height: 1000px;
+        }
+        @media (min-width: 1200px) {
+          min-height: 1200px;
+        }
+        @media (min-width: 1400px) {
+          min-height: 1400px;
+        }
         @media (orientation: landscape) {
+          padding: 0;
           flex-direction: row;
           min-height: 300px;
           @media (min-width: 576px) {
-            min-height: 330px;
+            min-height: 350px;
           }
           @media (min-width: 768px) {
-            min-height: 350px;
+            min-height: 370px;
           }
           @media (min-width: 992px) {
             min-height: 430px;
@@ -227,7 +242,7 @@ html {
         }
         @media (orientation: landscape) {
           min-width: 400px;
-          padding: 150px 0 50px;
+          padding: 180px 0 90px;
           @media (min-width: 576px) {
             min-width: 450px;
           }
@@ -285,6 +300,13 @@ html {
           margin-top: 20px;
           font-size: 2rem;
         }
+        .fc-daygrid-day-frame {
+          cursor: pointer;
+          transition: 0.1s;
+          &:hover {
+            background: #e9e4f057;
+          }
+        }
         .fc-daygrid-event-harness {
           pointer-events: none;
         }
@@ -320,7 +342,7 @@ html {
         }
       }
       .tasksListContainer {
-        padding: 20px 0 50px;
+        padding: 20px 0 80px;
         display: flex;
         flex-direction: column;
         justify-content: stretch;
@@ -359,41 +381,41 @@ html {
             }
           }
           h3 {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             padding: 10px;
             @media (min-width: 576px) {
-              font-size: 1.3rem;
+              font-size: 1.5rem;
             }
             @media (min-width: 768px) {
-              font-size: 1.6rem;
+              font-size: 1.7rem;
             }
             @media (min-width: 992px) {
-              font-size: 1.8rem;
+              font-size: 1.9rem;
             }
             @media (min-width: 1200px) {
-              font-size: 2rem;
+              font-size: 2.1rem;
             }
             @media (min-width: 1400px) {
-              font-size: 2.2rem;
+              font-size: 2.3rem;
             }
           }
           p {
-            font-size: 0.7rem;
+            font-size: 0.9rem;
             padding: 10px;
             @media (min-width: 576px) {
-              font-size: 0.9rem;
-            }
-            @media (min-width: 768px) {
               font-size: 1.1rem;
             }
-            @media (min-width: 992px) {
+            @media (min-width: 768px) {
               font-size: 1.3rem;
             }
-            @media (min-width: 1200px) {
+            @media (min-width: 992px) {
               font-size: 1.5rem;
             }
-            @media (min-width: 1400px) {
+            @media (min-width: 1200px) {
               font-size: 1.7rem;
+            }
+            @media (min-width: 1400px) {
+              font-size: 1.9rem;
             }
           }
           .editPanelInput {
@@ -401,29 +423,29 @@ html {
             border: none;
             width: 90%;
             text-align: center;
-            font-size: 0.7rem;
+            font-size: 0.9rem;
             padding: 10px 15px;
             margin: 10px 0;
             outline: none;
             @include dark-color();
             @media (min-width: 576px) {
-              font-size: 0.9rem;
+              font-size: 1.1rem;
               padding: 18px 11px;
             }
             @media (min-width: 768px) {
-              font-size: 1.1rem;
+              font-size: 1.3rem;
               padding: 21px 12px;
             }
             @media (min-width: 992px) {
-              font-size: 1.3rem;
+              font-size: 1.5rem;
               padding: 24px 13px;
             }
             @media (min-width: 1200px) {
-              font-size: 1.5rem;
+              font-size: 1.7rem;
               padding: 27px 14px;
             }
             @media (min-width: 1400px) {
-              font-size: 1.7rem;
+              font-size: 1.9rem;
               padding: 30px 15px;
             }
           }
@@ -516,6 +538,17 @@ html {
   @media (min-width: 1400px) {
     font-size: 2rem;
     padding: 30px 15px;
+  }
+}
+.dateInput {
+  @media (min-width: 992px) {
+    &::-webkit-calendar-picker-indicator {
+      transition: 0.1s ease;
+    }
+    &::-webkit-calendar-picker-indicator:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
   }
 }
 
